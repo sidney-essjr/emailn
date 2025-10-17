@@ -33,6 +33,10 @@ func (s *serviceMock) Create(newCampaign contract.NewCampaign) (string, map[stri
 	return id, errors
 }
 
+func (s *serviceMock) GetBy(id string) (*contract.CampaignResponse, map[string]string) {
+	return nil, nil
+}
+
 func Test_campaign_post_should_create_new_campaing(t *testing.T) {
 	assert := assert.New(t)
 	expectedId := map[string]string{"id": "2"}

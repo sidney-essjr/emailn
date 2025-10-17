@@ -13,10 +13,10 @@ func (h *Handler) CampaignGetById(w http.ResponseWriter, r *http.Request) (any, 
 		return nil, http.StatusBadRequest, map[string]string{"error": "missing id parameter"}
 	}
 
-	campaign, err := h.CampaignService.GetById(id)
+	campaign, err := h.CampaignService.GetBy(id)
 
 	if err != nil {
-		return nil, http.StatusNotFound, map[string]string{"error": err.Error()}
+		return nil, http.StatusNotFound, err
 	}
 
 	return campaign, http.StatusOK, nil

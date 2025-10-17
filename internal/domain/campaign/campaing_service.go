@@ -24,3 +24,18 @@ func (s *CampaingService) Create(newCampaign contract.NewCampaign) (string, map[
 
 	return id, nil
 }
+
+func (s *CampaingService) GetBy(id string) (*contract.CampaignResponse, map[string]string) {
+	campaign, err := s.GetById(id)
+
+	if err != nil {
+		return nil, map[string]string{"error": err.Error()}
+	}
+
+	return &contract.CampaignResponse{
+		Id:      campaign.Id,
+		Name:    campaign.Name,
+		Content: campaign.Content,
+		Status:  string(campaign.Status),
+	}, nil
+}

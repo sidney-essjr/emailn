@@ -30,6 +30,17 @@ func Test_NewCampaign_CreateCampaign(t *testing.T) {
 	assert.Equal(StatusPending, campaign.Status)
 	assert.True(campaign.Status.IsValid())
 }
+func Test_NewCampaign_InvalidStatus(t *testing.T) {
+	//arrange
+	assert := assert.New(t)
+
+	//act
+	campaign, _ := NewCampaign(name, content, emails)
+	campaign.Status = "invalid"
+
+	//assert
+	assert.False(campaign.Status.IsValid())
+}
 
 func Test_NewCampaign_IdIsNotNil(t *testing.T) {
 	assert := assert.New(t)

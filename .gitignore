@@ -1,0 +1,10 @@
+/tmp
+
+.env
+
+*.out
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
